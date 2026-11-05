@@ -10,7 +10,7 @@ Copy this repository's files into `/data/plugins/team_feeds` in your Dispatcharr
 
 ## Use
 
-1. Add rules in the plugin settings, one per line: `PATTERN = Team A, Team B`.
+1. Add one row per channel in the plugin settings: text to find in the stream name or tvg-id, and the full team names as Teamarr spells them, for example `YES NETWORK` and `Brooklyn Nets, New York Yankees`.
 2. Use **Preview** to check the matches, then **Apply Now**.
 3. **Remove Tags** takes the tags off again.
 
