@@ -20,6 +20,17 @@ Or download `team_feeds-1.1.0.zip` from Releases and import it on the Plugins pa
 2. Use **Preview** to check the matches, then **Apply Now**.
 3. **Remove Tags** takes the tags off again.
 
+## Changelog
+
+### 1.1.0
+- Channels are now set in a table, one row per channel, instead of a text box. Rules from 1.0 are still read.
+- Added the "How to fill this in" help to the settings.
+- A stream that matches several rows goes to the longest match, so `MSGSN` beats `MSG`.
+
+### 1.0.0
+- First version: tags matching streams with their teams, and tags them again after each M3U refresh.
+- Added **Apply Now**, **Preview** and **Remove Tags**.
+
 ## Licence
 
 MIT
