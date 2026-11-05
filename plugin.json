@@ -1,0 +1,73 @@
+{
+  "name": "Team Feeds",
+  "version": "1.1.0",
+  "description": "Tells Teamarr which team a regional sports network carries. Appends the team(s) to matching stream names, e.g. 'SPACE CITY HOME NETWORK (Houston Rockets)', which Teamarr's feed separation reads to put the stream in that team's home or away feed. Re-applied after every M3U refresh (the refresh restores provider names).",
+  "author": "brxdy",
+  "license": "MIT",
+  "repo_url": "https://github.com/Brxdy22/Dispatcharr-Team-Feeds-Plugin",
+  "fields": [
+    {
+      "id": "help",
+      "type": "info",
+      "label": "How to fill this in",
+      "help_text": "One row per channel. Channel: text to find in the stream name or tvg-id (case-insensitive), e.g. YES NETWORK. Team(s): full team names exactly as Teamarr/ESPN spells them, comma-separated, e.g. Brooklyn Nets, New York Yankees. Use Add row for more channels; the bin icon deletes one. Save, then Apply."
+    },
+    {
+      "id": "channels",
+      "type": "table",
+      "label": "Channel = team(s)",
+      "columns": [
+        {
+          "id": "channel",
+          "label": "Channel",
+          "type": "string"
+        },
+        {
+          "id": "teams",
+          "label": "Team(s)",
+          "type": "string"
+        }
+      ],
+      "default": [
+        {
+          "channel": "YES NETWORK",
+          "teams": "Brooklyn Nets, New York Yankees"
+        },
+        {
+          "channel": "SPACE CITY HOME NETWORK",
+          "teams": "Houston Rockets, Houston Astros"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "apply",
+      "label": "Apply Now",
+      "description": "Tags every matching stream now. Also runs automatically after each M3U refresh.",
+      "button_label": "Apply",
+      "button_variant": "filled",
+      "button_color": "green",
+      "events": [
+        "m3u_refresh"
+      ],
+      "async": true
+    },
+    {
+      "id": "preview",
+      "label": "Preview",
+      "description": "Lists the streams each line matches and their new names. Changes nothing.",
+      "button_label": "Preview",
+      "button_variant": "outline",
+      "button_color": "blue"
+    },
+    {
+      "id": "remove_tags",
+      "label": "Remove Tags",
+      "description": "Strips the team tags from stream names (the next M3U refresh would also restore them, until Apply runs again).",
+      "button_label": "Remove",
+      "button_variant": "outline",
+      "button_color": "orange"
+    }
+  ]
+}
