@@ -8,6 +8,8 @@ Tells [Teamarr](https://github.com/Pharaoh-Labs/teamarr) which team a regional s
 
 Copy this repository's files into `/data/plugins/team_feeds` in your Dispatcharr data folder, then enable **Team Feeds** on the Plugins page.
 
+Or download `team_feeds-1.1.0.zip` from Releases and import it on the Plugins page. Use that zip rather than GitHub's source zip, because Dispatcharr names the plugin after the zip's top folder.
+
 ## Use
 
 1. Add one row per channel in the plugin settings: text to find in the stream name or tvg-id, and the full team names as Teamarr spells them, for example `YES NETWORK` and `Brooklyn Nets, New York Yankees`.
