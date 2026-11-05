@@ -2,7 +2,7 @@
   "name": "Team Feeds",
   "version": "1.1.0",
   "description": "Tells Teamarr which team a regional sports network carries. Appends the team(s) to matching stream names, e.g. 'SPACE CITY HOME NETWORK (Houston Rockets)', which Teamarr's feed separation reads to put the stream in that team's home or away feed. Re-applied after every M3U refresh (the refresh restores provider names).",
-  "author": "brxdy",
+  "author": "Brxdy22",
   "license": "MIT",
   "repo_url": "https://github.com/Brxdy22/Dispatcharr-Team-Feeds-Plugin",
   "fields": [
