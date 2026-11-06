@@ -1,6 +1,6 @@
 {
   "name": "Teamarr Assistant",
-  "version": "2",
+  "version": "2.0.0.1",
   "description": "Helps Teamarr work with Dispatcharr. Tags regional sports network streams with their team(s) so Teamarr can sort them into home and away feeds, and starts a Teamarr generation when new streams appear in the M3U groups you choose, so channels show up soon after your provider posts them.",
   "author": "Brxdy22",
   "license": "MIT",
@@ -10,7 +10,7 @@
       "id": "help",
       "type": "info",
       "label": "Team tags: how to fill this in",
-      "help_text": "One row per channel. Channel: text to find in the stream name or tvg-id (case-insensitive), e.g. YES NETWORK. Team(s): full team names exactly as Teamarr/ESPN spells them, comma-separated, e.g. Brooklyn Nets, New York Yankees. Use Add row for more channels; the bin icon deletes one. Save, then Apply."
+      "help_text": "One row per channel. Channel: text to find in the stream name or tvg-id (case-insensitive), e.g. SPORTS NETWORK. Team(s): full team names exactly as Teamarr/ESPN spells them, comma-separated, e.g. City Team, Other City Team. Use Add row for more channels; the bin icon deletes one. Save, then Apply."
     },
     {
       "id": "channels",
@@ -28,16 +28,7 @@
           "type": "string"
         }
       ],
-      "default": [
-        {
-          "channel": "YES NETWORK",
-          "teams": "Brooklyn Nets, New York Yankees"
-        },
-        {
-          "channel": "SPACE CITY HOME NETWORK",
-          "teams": "Houston Rockets, Houston Astros"
-        }
-      ]
+      "default": []
     },
     {
       "id": "sync_help",

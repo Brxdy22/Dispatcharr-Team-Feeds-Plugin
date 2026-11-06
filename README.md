@@ -4,7 +4,7 @@
 
 A plugin for [Dispatcharr](https://github.com/Dispatcharr/Dispatcharr) that helps it work with [Teamarr](https://github.com/Pharaoh-Labs/teamarr). Formerly Team Feeds.
 
-- **Team tags:** appends the team to regional sports network stream names, for example `SPACE CITY HOME NETWORK (Houston Rockets)`, so Teamarr can put the stream in that team's home or away feed. Tags are re-applied after every M3U refresh.
+- **Team tags:** appends the team to regional sports network stream names, for example `SPORTS NETWORK (Team Name)`, so Teamarr can put the stream in that team's home or away feed. Tags are re-applied after every M3U refresh.
 - **Teamarr sync:** starts a Teamarr generation when new streams appear in the M3U groups you choose, so channels show up soon after your provider posts them.
 
 Tested on Dispatcharr 0.33.0 and Teamarr 2.25.1.
@@ -13,13 +13,18 @@ Tested on Dispatcharr 0.33.0 and Teamarr 2.25.1.
 
 Copy this repository's files into `/data/plugins/teamarr_assistant` in your Dispatcharr data folder, then enable **Teamarr Assistant** on the Plugins page.
 
-Or download `teamarr_assistant-2.zip` from Releases and import it on the Plugins page. Use that zip rather than GitHub's source zip, because Dispatcharr names the plugin after the zip's top folder.
+Or download `teamarr_assistant-2.0.0.1.zip` from Releases and import it on the Plugins page. Use that zip rather than GitHub's source zip, because Dispatcharr names the plugin after the zip's top folder.
 
 Upgrading from Team Feeds: this installs as a new plugin. Copy your channel rows across, then delete Team Feeds.
 
 ## Team tags
 
-1. Add one row per channel in the plugin settings: text to find in the stream name or tvg-id, and the full team names as Teamarr spells them, for example `YES NETWORK` and `Brooklyn Nets, New York Yankees`.
+1. Add one row per channel in the plugin settings: text to find in the stream name or tvg-id, and the full team names as Teamarr spells them, as in this example. The table starts empty.
+
+   | Channel | Team(s) |
+   |---|---|
+   | `SPORTS NETWORK` | `City Team, Other City Team` |
+
 2. Use **Preview Tags** to check the matches, then **Apply Tags**.
 3. **Remove Tags** takes the tags off again.
 

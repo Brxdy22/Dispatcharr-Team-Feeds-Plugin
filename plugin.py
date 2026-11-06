@@ -1,13 +1,13 @@
 """Teamarr Assistant: helps Teamarr work with Dispatcharr.
 
-Team tags. Teamarr's feed separation can't tell that "SPACE CITY HOME NETWORK" is the
-Rockets' broadcaster when ESPN's broadcast data doesn't list it (Teamarr issue #1172).
-It does recognise a team name in parentheses in the stream name, "... (Houston Rockets)",
+Team tags. Teamarr's feed separation can't tell that "SPORTS NETWORK" is a
+team's broadcaster when ESPN's broadcast data doesn't list it (Teamarr issue #1172).
+It does recognise a team name in parentheses in the stream name, "... (Team Name)",
 and then files the stream under that team's home or away feed depending on the game.
 This plugin appends those tags. Dispatcharr identifies streams by URL (M3U hash key), so
 a renamed stream keeps its channel assignments; each M3U refresh writes the provider's
 name back, so the tags are re-applied after every refresh (m3u_refresh). A channel that
-carries several teams (YES: Nets and Yankees) gets one tag per team; Teamarr only uses
+carries several teams (two teams in one city) gets one tag per team; Teamarr only uses
 the one matching the game's teams.
 
 Teamarr sync. Teamarr only sees new provider streams when it next generates. After each
@@ -366,7 +366,7 @@ class Plugin:
             return self._after_refresh(settings, context, params.get("payload") or {})
         rules = _rules(settings)
         if not rules:
-            return {"status": "error", "message": "No mappings set. Add lines like 'YES NETWORK = Brooklyn Nets'."}
+            return {"status": "error", "message": "No mappings set. Add lines like 'SPORTS NETWORK = Team Name'."}
         if action_id in ("apply", "preview"):
             return self._apply(rules, write=action_id == "apply")
         if action_id == "remove_tags":
@@ -453,7 +453,7 @@ class Plugin:
         from django.db.models import Q
         from apps.channels.models import Stream
 
-        # A stream matched by several rows ("MSG" and "MSGSN") goes to the longest pattern.
+        # A stream matched by several rows ("XYZ" and "XYZ PLUS") goes to the longest pattern.
         best = {}
         for pattern, teams in rules:
             qs = Stream.objects.filter(Q(name__icontains=pattern) | Q(tvg_id__icontains=pattern.replace(" ", "")))
