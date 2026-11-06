@@ -1,15 +1,15 @@
 {
-  "name": "Team Feeds",
-  "version": "1.1.0",
-  "description": "Tells Teamarr which team a regional sports network carries. Appends the team(s) to matching stream names, e.g. 'SPACE CITY HOME NETWORK (Houston Rockets)', which Teamarr's feed separation reads to put the stream in that team's home or away feed. Re-applied after every M3U refresh (the refresh restores provider names).",
+  "name": "Teamarr Assistant",
+  "version": "2.0.0",
+  "description": "Helps Teamarr work with Dispatcharr. Tags regional sports network streams with their team(s) so Teamarr can sort them into home and away feeds, and starts a Teamarr generation when new streams appear in the M3U groups you choose, so channels show up soon after your provider posts them.",
   "author": "Brxdy22",
   "license": "MIT",
-  "repo_url": "https://github.com/Brxdy22/Dispatcharr-Team-Feeds-Plugin",
+  "repo_url": "https://github.com/Brxdy22/Dispatcharr-Teamarr-Assistant-Plugin",
   "fields": [
     {
       "id": "help",
       "type": "info",
-      "label": "How to fill this in",
+      "label": "Team tags: how to fill this in",
       "help_text": "One row per channel. Channel: text to find in the stream name or tvg-id (case-insensitive), e.g. YES NETWORK. Team(s): full team names exactly as Teamarr/ESPN spells them, comma-separated, e.g. Brooklyn Nets, New York Yankees. Use Add row for more channels; the bin icon deletes one. Save, then Apply."
     },
     {
@@ -38,13 +38,79 @@
           "teams": "Houston Rockets, Houston Astros"
         }
       ]
+    },
+    {
+      "id": "sync_help",
+      "type": "info",
+      "label": "Teamarr sync",
+      "help_text": "After each refresh of the M3U account below, compares the stream names in the groups below with the last check. If new ones appear, a Teamarr generation starts. Dispatcharr only sees provider changes when it refreshes, so give the M3U account a frequent refresh schedule. Time-windowed streams only attach and detach during a generation, so keep Teamarr's schedule running, or set a daily run and raise Teamarr's stream pre-buffer to cover the gap."
+    },
+    {
+      "id": "sync_enabled",
+      "type": "boolean",
+      "label": "Start Teamarr when new streams appear",
+      "default": false
+    },
+    {
+      "id": "teamarr_url",
+      "type": "string",
+      "label": "Teamarr URL",
+      "help_text": "Address Dispatcharr can reach Teamarr at.",
+      "default": "http://teamarr:9195"
+    },
+    {
+      "id": "sync_account",
+      "type": "select",
+      "label": "M3U account",
+      "help_text": "The M3U account to watch. To see a new account here, press Reload Plugin at the top of this page.",
+      "default": "",
+      "options": [],
+      "placeholder": "Choose an account"
+    },
+    {
+      "id": "sync_groups",
+      "type": "multiselect",
+      "label": "Groups to watch",
+      "help_text": "Enabled groups from your M3U accounts, with the account in brackets. To see a new group here, press Reload Plugin at the top of this page.",
+      "default": [],
+      "options": [],
+      "placeholder": "Choose groups"
+    },
+    {
+      "id": "sync_today_only",
+      "type": "boolean",
+      "label": "Only count streams dated today",
+      "help_text": "Ignores streams whose name carries another date. Names with no date always count.",
+      "default": true
+    },
+    {
+      "id": "sync_min_new",
+      "type": "number",
+      "label": "New streams needed",
+      "help_text": "How many new streams it takes to start a generation.",
+      "default": 1
+    },
+    {
+      "id": "sync_cooldown_minutes",
+      "type": "number",
+      "label": "Minimum minutes between generations",
+      "help_text": "New streams found sooner wait for the next refresh.",
+      "default": 10
+    },
+    {
+      "id": "sync_daily_time",
+      "type": "select",
+      "label": "Daily run time",
+      "help_text": "The first refresh at or after this time starts one generation, which lets you turn Teamarr's own scheduler off. New streams found earlier that day wait for it.",
+      "default": "off",
+      "options": []
     }
   ],
   "actions": [
     {
       "id": "apply",
-      "label": "Apply Now",
-      "description": "Tags every matching stream now. Also runs automatically after each M3U refresh.",
+      "label": "Apply Tags",
+      "description": "Tags every matching stream now. Also runs after each M3U refresh, followed by the Teamarr sync check.",
       "button_label": "Apply",
       "button_variant": "filled",
       "button_color": "green",
@@ -55,7 +121,7 @@
     },
     {
       "id": "preview",
-      "label": "Preview",
+      "label": "Preview Tags",
       "description": "Lists the streams each line matches and their new names. Changes nothing.",
       "button_label": "Preview",
       "button_variant": "outline",
@@ -68,6 +134,22 @@
       "button_label": "Remove",
       "button_variant": "outline",
       "button_color": "orange"
+    },
+    {
+      "id": "sync_check",
+      "label": "Check Sync",
+      "description": "Shows what the sync watches and which new streams it would act on. Changes nothing.",
+      "button_label": "Check",
+      "button_variant": "outline",
+      "button_color": "blue"
+    },
+    {
+      "id": "sync_now",
+      "label": "Run Teamarr Now",
+      "description": "Starts a Teamarr generation now and records the current streams as seen.",
+      "button_label": "Run",
+      "button_variant": "filled",
+      "button_color": "green"
     }
   ]
 }
