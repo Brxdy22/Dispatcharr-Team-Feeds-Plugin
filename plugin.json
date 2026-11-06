@@ -1,6 +1,6 @@
 {
   "name": "Teamarr Assistant",
-  "version": "2.0.0",
+  "version": "2",
   "description": "Helps Teamarr work with Dispatcharr. Tags regional sports network streams with their team(s) so Teamarr can sort them into home and away feeds, and starts a Teamarr generation when new streams appear in the M3U groups you choose, so channels show up soon after your provider posts them.",
   "author": "Brxdy22",
   "license": "MIT",

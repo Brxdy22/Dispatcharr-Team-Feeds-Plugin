@@ -13,7 +13,7 @@ Tested on Dispatcharr 0.33.0 and Teamarr 2.25.1.
 
 Copy this repository's files into `/data/plugins/teamarr_assistant` in your Dispatcharr data folder, then enable **Teamarr Assistant** on the Plugins page.
 
-Or download `teamarr_assistant-2.0.0.zip` from Releases and import it on the Plugins page. Use that zip rather than GitHub's source zip, because Dispatcharr names the plugin after the zip's top folder.
+Or download `teamarr_assistant-2.zip` from Releases and import it on the Plugins page. Use that zip rather than GitHub's source zip, because Dispatcharr names the plugin after the zip's top folder.
 
 Upgrading from Team Feeds: this installs as a new plugin. Copy your channel rows across, then delete Team Feeds.
 
